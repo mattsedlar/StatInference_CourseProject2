@@ -1,0 +1,29 @@
+# Statistical Inference Course Project: Basic Inferential Data Analysis
+By Matthew Sedlar  
+
+## Overview
+
+## About the Data
+
+The ToothGrowth data looks at the growth of the odontoblast of the incisor teeth after vitamin C was given to guinea pigs via one of two delivery methods. The response is the length of odontoblasts (cells responsible for tooth growth) in 60 guinea pigs. Each animal received one of three dose levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods, (orange juice or ascorbic acid (a form of vitamin C and coded as VC).
+
+The ToothGrowth data is provided as a data frame with 60 observations on 3 variables.
+
+* [,1]	len	numeric	Tooth length
+* [,2]	supp	factor	Supplement type (VC or OJ).
+* [,3]	dose	numeric	Dose in milligrams/day
+
+## Loading the Data
+
+```{r}
+data("ToothGrowth")
+```
+
+## Analysis
+
+We want to look at whether supplement types, dosages, or a combination of both had an effect on tooth growth. An easy place to start would be with a plot ...
+
+
+
+## Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering)
+
