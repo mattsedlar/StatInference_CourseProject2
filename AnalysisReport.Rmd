@@ -19,11 +19,45 @@ The ToothGrowth data is provided as a data frame with 60 observations on 3 varia
 data("ToothGrowth")
 ```
 
+## Hypothesis
+
+I want to test if the supplement type, dosage or a combination of both have an effect on tooth growth. To do this, I have to determine my null hypothesis. Since I don't have access to the average growth of guinea pig teeth (who does?!?), I've determined the best measure is the average length of teeth over all subjects. That way, if I single out one portion of the sample and it performs better than the average, I know there's something going on there.
+
+The average growth is `r round(mean(ToothGrowth$len),2)`, which makes my null hypothesis:
+
+$$H_{o}:\mu=18.81$$
+
+Since my standard deviation is `r round(sd(ToothGrowth$len),2)`, I have calculated the standard error of the mean to be `r round(sd(ToothGrowth$len)/sqrt(60),2)`. I want to choose a constant so that the probability of my sample mean being greater than the constant is 5%, so I will use the following formula:
+
+```{r echo=FALSE}
+
+constant <- 18.81+.099*1.645
+
+```
+
+$$C=18.81+0.99 * 1.645=18.97$$
+
+So the rule of rejecting the null hypothesis when the sample mean is greater than or equal to 18.97 has the property that the probability of rejection is 5% when the null hypothesis is true.
+
 ## Analysis
 
-We want to look at whether supplement types, dosages, or a combination of both had an effect on tooth growth. An easy place to start would be with a plot ...
+We want to look at whether supplement types, dosages, or a combination of both had an effect on tooth growth. Let's first look at length by dosage and see if there is a correlation between the two.
+
+```{r}
+cor(ToothGrowth$len,ToothGrowth$dose)
+```
+
+The correlation is pretty close to 1, which means there is a positive correlation between the two -- the higher the dosage, the longer the length. Let's plot this with a linear regression line, which by default uses a 95% confidence region.
+
+```{r message=FALSE, fig.height=3.75}
+library(ggplot2)
+
+ggplot(ToothGrowth, aes(dose, len)) +
+  geom_point() +
+  geom_smooth(method="lm") +
+  ggtitle("Length of Teeth by Dosage per Day")
+
+```
 
 
-
-## Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering)
-
+## State your conclusions and the assumptions needed for your conclusions. 
