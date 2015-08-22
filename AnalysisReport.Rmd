@@ -1,7 +1,7 @@
 ---
 output: pdf_document
 ---
-# Statistical Inference Course Project: Basic Inferential Data Analysis
+# Statistical Inference Course Project: Basic Inferential Analysis of Data on Vitamin C and Tooth Length in Guinea Pigs
 By Matthew Sedlar  
 
 ## Overview
@@ -75,7 +75,8 @@ library(ggplot2)
 
 ggplot(data, aes(dose,len, fill=supp)) +
   geom_histogram(stat="identity") +
-  facet_grid(.~supp)
+  facet_grid(.~supp) +
+  ggtitle("Length and Dosage Per Day by Delivery System")
 
 ```
 
@@ -85,7 +86,9 @@ For both the 0.5 mg/day (p-value = 0.006359) and 1.0 mg/day dosages (p-value = 0
 
 ## Conclusion 
 
-In the sample population, orange juice (at dosages of 0.5 and 1.0 mg/day) was better for growing guinea pig teeth than ascorbic acid. With such an incredibly small sample size, however, further research is required to determine whether it is possible to build an army of guinea pigs with large incisors with just a carton of orange juice acquired from Trader Joe's. 
+In the sample population, orange juice (at dosages of 0.5 and 1.0 mg/day) was a better delivery system for growing guinea pig teeth than ascorbic acid. However, with this conclusion I had to make the assumption that the data is unbiased. For example, there's an assumption that the guinea pigs were not receiving extra vitamin C through their diet and that both sample groups were receiving the same diet.
+
+As always, with studies like these where there is such an incredibly small sample size, further research is required.  
 
 \pagebreak
 
