@@ -59,7 +59,7 @@ With unequal variances, I will use the Welch Two Sample t-test for my confidence
 $$\overline{Y} - \overline{X} \pm t_{df} \times \left( \dfrac{s^{2}_{x}}{n_{x}} +  \dfrac{s^{2}_{y}}{n_{y}} \right)^\frac{1}{2}$$ 
 
 
-Or I can use the simple t.test function in R with the parameter var.equal=FALSE.
+Or I can use the simple t.test function in R with the parameter var.equal=FALSE. It should be noted that by default R's t.test function tests using a 95% confidence interval, so that is what I will be using for this analysis.
 
 ```{r}
 t.test(oj$len,vc$len,var.equal = FALSE)
