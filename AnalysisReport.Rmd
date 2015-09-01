@@ -1,7 +1,7 @@
 ---
-output: pdf_document
+output: html_document
 ---
-# Statistical Inference Course Project: Basic Inferential Analysis of Data on Vitamin C and Tooth Length in Guinea Pigs
+# Basic Inferential Analysis of Data on Vitamin C and Tooth Length in Guinea Pigs
 By Matthew Sedlar  
 
 ## Overview
@@ -33,6 +33,33 @@ data <- ToothGrowth
 ```
 
 ## Hypothesis
+
+The first step is to conduct an exploratory analysis of the data to find any interesting patterns. I will start off with a boxplot that shows tooth growth by delivery type.
+
+```{r echo=FALSE, message=FALSE, fig.height=3.75}
+library(ggplot2)
+
+ggplot(data) +
+  geom_boxplot(aes(supp,len,fill=supp)) +
+  xlab("Delivery Type") +
+  ylab("Length") +
+  ggtitle("Tooth Length by Delivery Type")
+
+```
+
+While the range of tooth length with the ascorbic acid delivery type is much more spread out, the bulk of variables -- everything between Q1 and Q3 -- for the orange juice delivery type is higher. Is orange juice more effective than ascorbic acid? What about dosage?
+
+```{r echo=FALSE, message=FALSE, fig.height=3.75}
+
+ggplot(data) +
+  geom_point(aes(dose,len), pch=1,cex=5,alpha=.5) +
+  ylab("Tooth Length") +
+  xlab("Dosage") +
+  ggtitle("Tooth Length by Daily Dosage")
+  
+```
+
+It also looks like there is a positive correlation between a higher dosage and tooth length.
 
 I want to test if the supplement type or a combination of supplement type and dosage of supplement have an effect on tooth growth. To do this, I have to determine my null hypothesis. Since my hypothesis is that one supplement type is more efficient than the other, my null hypothesis is that both the means of the supplement types are equal, or: 
 
@@ -70,8 +97,6 @@ Since the p-value is greater than 0.05, there is no significant difference betwe
 How about by dosages? Plotting the lengths by dosage for each supplement type shows that lower dosages with orange juice appear to be more effective than lower doses with ascorbic acid.
 
 ```{r echo=FALSE, message=FALSE, fig.height=3.75}
-
-library(ggplot2)
 
 ggplot(data, aes(dose,len, fill=supp)) +
   geom_histogram(stat="identity") +
